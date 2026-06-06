@@ -1,5 +1,6 @@
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import org.testng.Assert;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -41,6 +42,7 @@ public class Basics {
         String actualAddress=getPlaceResponseJson.getString("address");
         System.out.println(actualAddress);
         //Junit, Testng for assertion and other
+        Assert.assertEquals(actualAddress,newAddress);
 
         given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json").
                 body("{\n" +
